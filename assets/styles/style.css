@@ -1,0 +1,261 @@
+/* 
+    TEST SETUP - STYLING
+*/
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body {
+    /* 
+        FONTS
+    */
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Comforter', cursive;
+
+    background-color: rgb(101, 14, 240);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h1 {
+    font-size: 6rem;
+    margin: 2rem 0;
+    padding: 0;
+}
+h2 {
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+main,header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#nr2,#nr3 {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+#hamburger_container {
+    width: 50px;
+    background-color: white;
+}
+
+
+#one, #two, #three {
+    transform-origin: center;
+}
+
+.left {
+    animation: hideLeft 3s linear forwards;
+}
+
+.right {
+    animation: hideRight 3s linear forwards;
+}
+
+.center {
+    animation: centerSpin 3s forwards linear;
+}
+
+@keyframes hideLeft {
+    50% {
+        transform: translateX(-50px);
+    }
+
+    100% {
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes hideRight {
+    50% {
+        transform: translateX(50px);
+    }
+
+    80% {
+        transform: rotate(-45deg) translate(50px, 0px);
+    }
+
+    90% {
+        transform: rotate(-45deg) translate(-2px, 16px);
+    }
+
+    100% {
+        transform: rotate(-45deg) translate(0px, 16px);
+    }
+}
+
+@keyframes centerSpin {
+    /* 80% {
+        x: 2px;
+        y: 21px;
+        transform: rotate(405deg);
+        transform-origin: 25px 25px;
+    }
+    90% {
+        x: 5px;
+        y: 36px;
+        transform: rotate(405deg);
+    }
+    100% {
+        x: 2px;
+        y: 21px;
+        transform: rotate(405deg);
+    } */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 
+    Works on all polylines and SVGs!
+*/
+polyline {
+    /* 
+    Using this will help with only using CSS.
+    JS is mostly used for finding the length of the paths and having a Eventlistener.
+    So by first finding the lengths we can just put them into the CSS and work in here.
+    */
+    transition: 
+        stroke-dasharray 450ms ease-in-out,
+        stroke-dashoffset 450ms ease-in-out;
+}
+svg {
+    transition: transform 450ms ease-in-out;
+}
+
+
+/* ========================== */
+/* ========= NR 2 =========== */
+/* ========================== */
+/* 
+    Help and inspiration from:
+    1. https://jakearchibald.com/2013/animated-line-drawing-svg/
+    2. https://codepen.io/ainalem/pen/PoYvggj
+*/
+
+/* 
+    Second Try 
+*/
+
+/*
+==============================
+= Setting up the start line! =
+==============================
+*/
+.st0 {
+    stroke-dasharray: 36 225;
+}
+.st1,
+.st2 {
+    /* 
+    So far it seems like:
+    1. The first number is the length of the line.
+    2. The second number is the spacing. 
+    3. Since we only want 1 line and the rest be space we use the second number to say "show nothing but 1 line".
+    4. If we want the line to move along the path/polyline etc. then we use offset to offset it from it's original placement.
+    */
+
+    /* Line-length: 36, Total path length: 82.8615 */
+    stroke-dasharray: 36 82.8615; 
+}
+
+/* 
+    When the (grand)/parent have the .active class change the stroke. 
+*/
+.active .st1,
+.active .st2 {
+    stroke-dasharray: 46.86 82.8615;
+    stroke-dashoffset: -36px;
+}
+.active .st0 {
+    stroke-dasharray: 184 225;
+    stroke-dashoffset: -41px;
+}
+
+/* ========================== */
+/* ========= NR 3 =========== */
+/* ========================== */
+
+svg#nr3__svg {
+    transition: transform 400ms ease-in-out;
+}
+
+svg#nr3__svg polyline {
+    transition: 
+        stroke-dasharray 300ms ease-in-out,
+        stroke-dashoffset 300ms ease-in-out;
+}
+
+/* 
+    Reset to Startline
+*/
+.top, 
+.bot {
+    stroke-dasharray: 52 104;
+}
+.center__left,
+.center__right {
+    stroke-dasharray: 26 37;
+}
+
+
+/* 
+    On Click
+*/
+.inactive #nr3__svg {
+    /* transform: rotate(225deg); */
+    animation: nr3-rotatezero .3s ease-in-out forwards;
+}
+@keyframes nr3-rotatezero {
+    0% {
+        transform: rotate(225deg);
+    }
+    75% {
+        transform: rotate(-45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+.active #nr3__svg {
+    /* transform: rotate(225deg); */
+    animation: nr3-rotate .3s ease-in-out forwards;
+}
+@keyframes nr3-rotate {
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(225deg);
+    }
+}
+.active .top, 
+.active .bot {
+    stroke-dasharray: 104 104;
+}
+.active .center__left,
+.active .center__right {
+    stroke-dasharray: 37 37;
+    stroke-dashoffset: -14.5px;
+}
