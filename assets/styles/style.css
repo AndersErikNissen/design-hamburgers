@@ -81,14 +81,17 @@ footer {
     justify-content: center;
 }
 header img {
-    width: 70px;
+    width: 50px;
 }
 .logoBox {
     display: flex;
     align-items: center;
 }
 .logoBox * {
-    margin: 0 1rem;
+    margin: 0 10px;
+}
+.logoBox h2 {
+    font-size: 2.5rem;
 }
 .logoBox h2:nth-child(2) {
     font-size: 1rem;
