@@ -37,12 +37,12 @@
 //     }
 // })
 
-// let 
-// test1 = document.querySelectorAll(".center__right");
+let 
+test1 = document.querySelectorAll("#Hamburger #one");
 
-// test1.forEach(item => {
-//     console.log(item.getTotalLength())
-// })
+test1.forEach(item => {
+    console.log(item.getTotalLength())
+})
 
 
 
