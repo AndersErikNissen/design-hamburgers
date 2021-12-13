@@ -8,6 +8,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     /* 
         FONTS
@@ -18,7 +19,7 @@ body {
 
     /* Gradient from: https://www.eggradients.com/ */
     background-color: #ff4e00;
-background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+    background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 
 
     background-repeat: no-repeat;
@@ -33,15 +34,18 @@ background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
 
     margin: 0;
 }
+
 h1 {
     font-size: 6rem;
     margin: 2rem 0;
     padding: 0;
 }
+
 h2 {
     font-size: 3rem;
     margin: 2rem 0;
 }
+
 header {
     display: flex;
     flex-direction: column;
@@ -51,6 +55,7 @@ header {
     padding: 1rem;
     margin: 0;
 }
+
 main {
     display: flex;
     justify-content: center;
@@ -58,7 +63,7 @@ main {
     flex-wrap: wrap;
 }
 
-#nr2,#nr3 {
+#nr2, #nr3, #nr4 {
     width: 100px;
     display: flex;
     justify-content: center;
@@ -70,6 +75,7 @@ main {
     margin: 1rem;
     padding: 1rem;
 }
+
 main h2 {
     font-size: 2rem;
     margin: 1rem 0;
@@ -80,19 +86,24 @@ footer {
     display: flex;
     justify-content: center;
 }
+
 header img {
     width: 50px;
 }
+
 .logoBox {
     display: flex;
     align-items: center;
 }
+
 .logoBox * {
     margin: 0 10px;
 }
+
 .logoBox h2 {
     font-size: 2.5rem;
 }
+
 .logoBox h2:nth-child(2) {
     font-size: 1rem;
 }
@@ -187,10 +198,11 @@ polyline {
     JS is mostly used for finding the length of the paths and having a Eventlistener.
     So by first finding the lengths we can just put them into the CSS and work in here.
     */
-    transition: 
+    transition:
         stroke-dasharray 450ms ease-in-out,
         stroke-dashoffset 450ms ease-in-out;
 }
+
 svg {
     transition: transform 450ms ease-in-out;
 }
@@ -217,6 +229,7 @@ svg {
 .st0 {
     stroke-dasharray: 36 225;
 }
+
 .st1,
 .st2 {
     /* 
@@ -228,7 +241,7 @@ svg {
     */
 
     /* Line-length: 36, Total path length: 82.8615 */
-    stroke-dasharray: 36 82.8615; 
+    stroke-dasharray: 36 82.8615;
 }
 
 /* 
@@ -239,6 +252,7 @@ svg {
     stroke-dasharray: 46.86 82.8615;
     stroke-dashoffset: -36px;
 }
+
 .active .st0 {
     stroke-dasharray: 184 225;
     stroke-dashoffset: -41px;
@@ -253,7 +267,7 @@ svg#nr3__svg {
 }
 
 svg#nr3__svg polyline {
-    transition: 
+    transition:
         stroke-dasharray 300ms ease-in-out,
         stroke-dashoffset 300ms ease-in-out;
 }
@@ -261,10 +275,11 @@ svg#nr3__svg polyline {
 /* 
     Reset to Startline
 */
-.top, 
+.top,
 .bot {
     stroke-dasharray: 52 104;
 }
+
 .center__left,
 .center__right {
     stroke-dasharray: 24.5 37;
@@ -278,33 +293,41 @@ svg#nr3__svg polyline {
     /* transform: rotate(225deg); */
     animation: nr3-rotatezero .3s ease-in-out forwards;
 }
+
 @keyframes nr3-rotatezero {
     0% {
         transform: rotate(225deg);
     }
+
     75% {
         transform: rotate(-45deg);
     }
+
     100% {
         transform: rotate(0deg);
     }
 }
+
 .active #nr3__svg {
     /* transform: rotate(225deg); */
     animation: nr3-rotate .3s ease-in-out forwards;
 }
+
 @keyframes nr3-rotate {
     75% {
         transform: rotate(270deg);
     }
+
     100% {
         transform: rotate(225deg);
     }
 }
-.active .top, 
+
+.active .top,
 .active .bot {
     stroke-dasharray: 104 104;
 }
+
 .active .center__left,
 .active .center__right {
     stroke-dasharray: 37 37;
@@ -317,7 +340,78 @@ svg#nr3__svg polyline {
 /* ========= NR 4 =========== */
 /* ========================== */
 
-/* Half Line Blue: 40.099998474121094*/
+/* Half Line Blue: 40.09999847412109498474121094*/
 /* Curve: 62.840675354003906*/
 /* Center Short: 20 */
 /* Center Long: 80.19999694824219 */
+
+#outer path {
+    transition:
+        stroke-dasharray 350ms ease-in-out,
+        stroke-dashoffset 350ms ease-in-out;
+}
+
+#center line {
+    transition:
+        stroke-dasharray 350ms ease-in-out,
+        stroke-dashoffset 350ms ease-in-out;
+}
+
+#center polyline {
+    stroke-dasharray: 42.1 50.1;
+    stroke-dashoffset: -12;
+    transform-origin: center;
+}
+
+#outer path {
+    stroke-dasharray: 40.0999 102.9444;
+    stroke-dashoffset: -64px;
+}
+
+.active #outer path {
+    stroke-dasharray: 67 102.9444;
+    stroke-dashoffset: 0px;
+}
+
+.active #center polyline {
+    animation: rotateX 400ms ease-in-out forwards;
+}
+.inactive #center polyline {
+    animation: rotateX-out 400ms ease-in-out forwards;
+}
+
+@keyframes rotateX {
+
+    70% {
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(0deg)
+    }
+    80% {
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(75deg)
+    }
+    90% {
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(30deg)
+    }
+    100%{
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(45deg);
+    }
+}
+@keyframes rotateX-out {
+    0%{
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(45deg);
+    }
+    10% {
+        stroke-dasharray: 21.1 50.1;
+        stroke-dashoffset: 0;
+        transform: rotate(0deg)
+    }
+}

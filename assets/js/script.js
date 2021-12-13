@@ -37,12 +37,12 @@
 //     }
 // })
 
-let 
-test1 = document.querySelectorAll("#Hamburger #one");
+// let 
+// test1 = document.querySelectorAll("#center polyline");
 
-test1.forEach(item => {
-    console.log(item.getTotalLength())
-})
+// test1.forEach(item => {
+//     console.log(item.getTotalLength())
+// })
 
 
 
@@ -54,6 +54,17 @@ document.querySelector("#nr2").addEventListener("click", function() {
     }
 })
 document.querySelector("#nr3").addEventListener("click", function() {
+    if(!this.classList.contains("active")) {
+        this.classList.add("active")
+        if (this.classList.contains("inactive")) {
+            this.classList.remove("inactive")
+        }
+    } else {
+        this.classList.remove("active")
+        this.classList.add("inactive")
+    }
+})
+document.querySelector("#nr4").addEventListener("click", function() {
     if(!this.classList.contains("active")) {
         this.classList.add("active")
         if (this.classList.contains("inactive")) {
